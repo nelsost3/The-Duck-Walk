@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>The Duck Walk - Volunteers</title>
+</head>
+
+<body>
+  <h1>Volunteers</h1>
+  [ <a href="index.html">Home</a> | <a href="Participants.html">Participants</a> | <a href="Races.html">Races</a> | <a href="ParticipantsByRace.html">Participants by Race </a> | 
+  <a href="Volunteers.html">Volunteers</a> | <a href="VolunteersByRace.html">Volunteers By Race</a> | <a href="Sponsors.html">Sponsors</a> | 
+  <a href="SponsorshipLevels.html">Sponsorship Levels</a> | <a href="Donations.html">Donations</a>]
+  <p>&nbsp;</p>
+
+<div id="browse">
+  <p><strong>Browse Volunteers</strong></p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newVolunteer()">New</a></th>
+    <th></th>
+    <th> Volunteer ID </th>
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> Phone Number </th>
+    <th> Employer </th>
+    <th> Sponsor Id </th>
+    <th> Shirt Size </th>
+    <th> Waiver Signed? </th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateVolunteer('this.volunteer_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteVolunteer('this.volunteer_id')">Delete</a></td>
+    <td align="center">1</td>
+    <td align="left">Pen</td>
+    <td align="left">Caldwell</td>
+    <td align="center">303-730-5567</td>
+    <td align="left">Grimes Inc</td>
+    <td align="center">NULL</td>
+    <td align="center">XS</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateVolunteer('this.volunteer_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteVolunteer('this.volunteer_id')">Delete</a></td>
+    <td align="center">2</td>
+    <td align="left">Fons</td>
+    <td align="left">Larrington</td>
+    <td align="center">923-849-8125</td>
+    <td align="left">Block-Labadie</td>
+    <td align="center">NULL</td>
+    <td align="center">3XL</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateVolunteer('this.volunteer_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteVolunteer('this.volunteer_id')">Delete</a></td>
+    <td align="center">3</td>
+    <td align="left">Sherri</td>
+    <td align="left">Kendell</td>
+    <td align="center">279-710-9175</td>
+    <td align="left">Renner-Huels</td>
+    <td align="center">NULL</td>
+    <td align="center">L</td>
+    <td align="center">0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addVolunteer">
+        <legend><strong>Add Volunteer</strong></legend>
+          <fieldset class="fields">
+            <label> First Name: </label> <input type="text" name="first_name" value = "Bing">
+            <label> Last Name: </label> <input type="text" name="last_name" value = "Kennan">
+            <label> Phone Number: </label> <input type="text" name="phone_number" value = "896-944-1874"> <br>
+            <label> Employer: </label> <input type="text" name="employer" value = "Flatley LLC">
+              <label> Sponsor ID: </label> 
+                <select>
+                  <option value="NULL">NULL</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              <label> Shirt Size: </label> <input type="text" name="shirt_size" value="2XL"> <br>
+              <label> Waiver Signed? </label> 
+                <select>
+                  <option value="0"> No </option>
+                  <option value="1"> Yes </option>
+                </select>
+      </fieldset>
+          <input class="btn" type="submit" id="addVolunteer" value="Add Volunteer">
+          <input class="btn" type="button" value="Cancel" onClick="browseVolunteer()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateVolunteer">
+        <legend><strong>Update Volunteer</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="volunteer_id" id="updatevolunteer_id" value="1">
+          <label> ID: </label> 1
+            <label> First Name: </label> <input type="text" name="first_name" value="Pen">
+            <label> Last Name: </label> <input type="text" name="last_name" value="Cadlwell">
+            <label> Phone Number: </label> <input type="text" name="phone_number" value="303-730-5567">
+            <label> Employer: </label> <input type="text" name="employer" value = "Grimes Inc">
+            <label> Sponsor ID: </label> 
+              <select>
+                <option value="NULL">NULL</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <label> Shirt Size: </label> <input type="text" name="shirt_size" value="XS"> <br>
+            <label> Waiver Signed? </label> 
+              <select>
+                <option value="0"> No </option>
+                <option value="1"> Yes </option>
+              </select>      </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveVolunteer" value="Save Update Volunteer">
+          <input class="btn" type="button" value="Cancel" onClick="browseVolunteer()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteVolunteer">
+      <legend><strong>Delete Volunteer</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you want to delete the following individual?</p>
+          <input type="hidden" name="volunteer_id" id="deletevolunteer_id" value="1">
+          <label><strong> Volunteer ID: </strong></label> 1
+            <label> Name: </label> <strong> Pen Caldwell </strong>
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteVolunteer" value="Delete Volunteer">
+          <input class="btn" type="button" value="Cancel" onClick="browseVolunteer()">
+  </form> 
+</div><!-- delete -->
+
+</body>
+</html>

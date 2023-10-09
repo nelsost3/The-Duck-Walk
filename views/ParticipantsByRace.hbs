@@ -1,0 +1,147 @@
+<!--- index.hbs -->
+<html>
+<head>
+    <title>The Duck Walk - Participants By Race</title>
+    <script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+<h1>Participants By Race</h1>
+[ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-race_id-html" method="GET" action="ParticipantsByRace">
+    
+    <label for="searchRaceParticipant" class="bold">Search by Race or Participant: </label>
+    <input type="text" name="searchRaceParticipant" id="searchRaceParticipant" class="searchBox">
+    
+    <input type="submit" class="button bold">
+    <a href="/"><button class="button bold">Clear</button></a>
+</form>
+<p></p>
+
+<!-- Create a table -->
+<table id="Races_Participants-table">
+
+    <!-- Header section -->
+    <thead>
+
+        <!-- For just the first row, we print each key of the row object as a header cell so we know 
+        what each column means when the page renders -->
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <!-- Body section --> 
+    <tbody>
+
+        <!-- For each row, print the id, race, and participant. -->
+        {{#each data}}
+        <tr data-value={{this.ID}}>
+            <td>{{this.ID}}</td>
+            <td>{{this.Race}}</td>
+            <td>{{this.Participant}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteRaces_Participants('{{this.ID}}')" style="padding-right: 10px;"></i></td>
+
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_Races_Participants.js"></script>
+
+
+<p></p>
+
+<div class="grid-container">
+    <!-- Form to add a record to the table -->
+    <div class="gridBox">
+        <h2>Add a new Participant By Race</h2>
+        <p>To add a new participant by race, please enter the information below and click 'Submit'!</p>
+        <form id="add-Races_Participants-form-ajax">
+
+            <label for="input-race_id" class="bold">Race: </label><br>
+            <select name="input-race_id" id="input-race_id" class="dropdown">
+                <option value="" selected disabled required>Select Race</option>
+                {{#each races}}
+                <option value="{{this.race_id}}">{{this.race_type}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+            <label for="input-participant_id" class="bold">Participant: </label><br>
+            <select name="input-participant_id" id="input-participant_id" class="dropdown">
+                <option value="" selected disabled required>Select Participant</option>
+                {{#each participants}}
+                <option value="{{this.participant_id}}">{{this.first_name}} {{this.last_name}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+            <input type="submit" class="button bold"><br>
+        </form>
+    </div>
+
+    <!-- Embed our javascript to handle the DOM manipulation and AJAX request --> 
+    <script src="./js/add_Races_Participants.js"></script>
+
+    <!-- Add a form to update a Participant Assignment -->
+    <div class="gridBox">
+        <h2>Update a Participant Assignment</h2>
+        <p>To update a specific Assignment select</p>
+        <form id="update-ParticipantsByRace-form-ajax">
+
+            <label for="update-assignment_id" class="bold">Assignment ID: </label><br>
+            <select name="update-assignment_id" id="update-assignment_id" class="dropdown">
+                <option value="" selected disabled required>Select Participant Assignment</option>
+                {{#each data}}
+                <option value="{{this.ID}}">{{this.ID}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+
+            <!-- Needs to be a dynamic drop down linking to Races table -->
+            <label for="update-race_id" class="bold">Race: </label><br>
+            <select name="update-race_id" id="update-race_id" class="dropdown">
+                <option value="" selected disabled required>Select a Race Type</option>
+                {{#each races}}
+                <option value="{{this.race_id}}">{{this.race_type}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+
+            <!-- Needs to be a dynamic drop down linking to Races table -->
+            <label for="update-participant_id" class="bold">Participant: </label><br>
+            <select name="update-participant_id" id="update-participant_id" class="dropdown">
+                <option value="" selected disabled required>Select a Participant</option>
+                {{#each participants}}
+                <option value="{{this.participant_id}}">{{this.first_name}} {{this.last_name}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+
+            <input type="submit" class="button"><br>
+
+        </form>    
+    </div>
+
+    <script src="./js/update_Races_Participants.js"></script>
+</div>

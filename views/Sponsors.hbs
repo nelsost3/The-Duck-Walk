@@ -1,0 +1,167 @@
+<!--- index.hbs -->
+<html>
+<head>
+    <title>The Duck Walk - Sponsors</title>
+    <script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+<h1>Sponsors</h1>
+[ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-sponsorID-html" method="GET" action="/Sponsors">
+    
+    <label for="search-sponsorID" class="bold">Search by Sponsor Name: </label>
+    <input type="text" name="sponsor_name" id="search-sponsorID" class="searchBox">
+    
+    <input type="submit" class="button">
+    <a href="/Sponsors"><button class="button">Clear</button></a>
+</form>
+<p></p>
+
+<!-- Create a table -->
+<table id="Sponsors-table">
+
+    <!-- Header section -->
+    <thead>
+
+        <!-- For just the first row, we print each key of the row object as a header cell so we know 
+        what each column means when the page renders -->
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <!-- Body section --> 
+    <tbody>
+
+        <!-- For each row, print the id, sponsor, contact, phone number, email address, and sponsorship level. -->
+        {{#each data}}
+        <tr data-value={{this.ID}}>
+            <td>{{this.ID}}</td>
+            <td>{{this.Sponsor}}</td>
+            <td>{{this.Contact}}</td>
+            <td>{{this.Phone}}</td>
+            <td>{{this.Email}}</td>
+            <td>{{this.[Sponsorship Level]}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteSponsors('{{this.ID}}')" style="padding-right: 10px;"></i></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_Sponsors.js"></script>
+
+
+<p></p>
+<!-- Form to add a record to the table -->
+<div class="grid-container">
+    <div class="gridBox">
+        <h2>Add a new Sponsor</h2>
+        <p>To add a new sponsor, please enter their information below and click 'Submit'!</p>
+        <form id="add-Sponsors-form-ajax">
+            <label for="inputSponsorName" class="bold">Sponsor Name: </label><br>
+            <input type="text" name="inputSponsorName" id="inputSponsorName" required><br>
+            <br>
+
+            <label for="inputContact" class="bold">Contact Person: </label><br>
+            <input type="text" name="inputContact" id="inputContact" required><br>
+            <br>
+
+            <label for="inputPhone" class="bold">Contact Phone Number: </label><br>
+            <input type="text" name="inputPhone" id="inputPhone" required><br>
+            <br>
+
+            <label for="inputEmail" class="bold">Contact Email: </label><br>
+            <input type="email" name="inputEmail" id="inputEmail" required><br>
+            <br>
+
+            <!-- Needs to be a dynamic drop down linking to SponsorshipLevels table -->
+            <label for="inputLevel" class="bold">Sponsorship Level: </label><br>
+            <select name="inputLevel" id="inputLevel" class="dropdown" required>
+                <option value='NULL' selected disabled>Select a sponsorship level</option>
+                <option value='NULL'>NONE</option>
+                {{#each levels}}
+                <option value='{{this.level}}'>{{this.level}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+
+            <input type="submit" class="button"><br>
+        </form>    
+    </div>
+
+
+    <!-- Embed our javascript to handle the DOM manipulation and AJAX request --> 
+    <script src="./js/add_Sponsors.js"></script>
+
+
+    <div class="gridBox">
+        <h2>Update a Sponsor</h2>
+        <p>To update a specific Sponsor select</p>
+        <form id="update-Sponsors-form-ajax">
+
+            <label for="input-sponsorid" class="bold"></label>Sponsor ID: </label><br>
+            <select name="input-sponsorid" id="mySelect" class="dropdown" required>
+                <option value="" selected disabled>Select a Sponsor ID</option>
+                {{#each data}}
+                <option value="{{this.ID}}">{{this.ID}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+
+            <label for="updateSponsorName" class="bold">Sponsor Name: </label><br>
+            <input type="text" name="updateSponsorName" id="updateSponsorName" required><br>
+            <br>
+
+            <label for="updateContact" class="bold">Contact Person: </label><br>
+            <input type="text" name="updateContact" id="updateContact" required><br>
+            <br>
+
+            <label for="updatePhone" class="bold">Contact Phone Number: </label><br>
+            <input type="text" name="updatePhone" id="updatePhone" required><br>
+            <br>
+
+            <label for="updateEmail" class="bold">Contact Email: </label><br>
+            <input type="email" name="updateEmail" id="updateEmail" required><br>
+            <br>
+
+            <!-- Needs to be a dynamic drop down linking to SponsorshipLevels table -->
+            <label for="updateLevel" class="bold">Sponsorship Level: </label><br>
+            <select name="updateLevel" id="updateLevel" class="dropdown" required>
+                <option value="NULL" selected disabled>Select a sponsorship level</option>
+                <option value="NULL">NONE</option>
+                {{#each levels}}
+                <option value="{{this.level}}">{{this.level}}</option>
+                {{/each}}
+            </select><br>
+            <br>
+
+            <input type="submit" class="button"><br>
+
+        </form>    
+    </div>
+
+    <script src="./js/update_Sponsors.js"></script>
+</div>
+

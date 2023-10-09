@@ -1,0 +1,118 @@
+<html>
+<head>
+  <title>The Duck Walk - Sponsors</title>
+</head>
+
+<body>
+  <h1>Sponsors</h1>
+  [ <a href="index.html">Home</a> | <a href="Participants.html">Participants</a> | <a href="Races.html">Races</a> | <a href="ParticipantsByRace.html">Participants by Race </a> | 
+  <a href="Volunteers.html">Volunteers</a> | <a href="VolunteersByRace.html">Volunteers By Race</a> | <a href="Sponsors.html">Sponsors</a> | 
+  <a href="SponsorshipLevels.html">Sponsorship Levels</a> | <a href="Donations.html">Donations</a>]
+  <p>&nbsp;</p>
+
+<div id="browse">
+  <p><strong>Browse Sponsorship Levels</strong></p>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newSponsor()">New</a></th>
+    <th></th>
+    <th> Sponsor ID </th>
+    <th> Company Name </th>
+    <th> Contact </th>
+    <th> Phone Number </th>
+    <th> Email Address </th>
+    <th> Sponsorship Level </th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateSponsor('this.Sponsor_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteSponsor('this.Sponsor_id')">Delete</a></td>
+    <td align="center">1</td>
+    <td align="left">Johns LLC</td>
+    <td align="left">Quintana Winsborrow</td>
+    <td align="center">912-432-0353</td>
+    <td align="center">qwinsborrow0@census.gov</td>
+    <td align="center" >Gold</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateSponsor('this.Sponsor_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteSponsor('this.Sponsor_id')">Delete</a></td>
+    <td align="center">2</td>
+    <td align="left">Ebert LLC</td>
+    <td align="left">Charmian Burtenshaw</td>
+    <td align="center">554-366-4465</td>
+    <td align="center">cburtenshaw1@npr.org</td>
+    <td align="center">Silver</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateSponsor('this.Sponsor_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteSponsor('this.Sponsor_id')">Delete</a></td>
+    <td align="center">3</td>
+    <td align="left">Block-Labadie</td>
+    <td align="left">Zitella Bending</td>
+    <td align="center">634-938-4892</em></td>
+    <td align="center">zbending2@mayoclinic.com</td>
+    <td align="center">Silver</td>
+
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addSponsor">
+        <legend><strong>Add Sponsor</strong></legend>
+          <fieldset class="fields">
+            <label> Company Name: </label> <input style="width: 225px;" type="text" name="sponsor_name" value = "Aufderhar, Mante and MacGyver">
+            <label> Contact: </label> <input type="text" name="sponsor_contact" value = "Naomi Stranaghan">
+            <label> Phone Number: </label> <input type="text" name="sponsor_phone" value = "355-285-8583"> <br>
+            <label> Email Address: </label> <input style="width: 236px;" type="text" name="sponsor_email" value="nstranaghan3@shutterfly.com">
+            <label> Sponsorship Level: </label> <select name="sponsorship_level" value = "Bronze">
+                <option value="Bronze">Bronze</option>
+                <option value="Silver">Silver</option>
+                <option value="Gold">Gold</option>
+                <option value="Grand Duck">Grand Duck </option>
+                </select>
+      </fieldset>
+          <input class="btn" type="submit" id="addSponsor" value="Add Sponsor">
+          <input class="btn" type="button" value="Cancel" onClick="browseSponsor()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateSponsor">
+        <legend><strong>Update Sponsor</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="Sponsor_id" id="updateSponsor_id" value="1">
+          <label> ID: </label> 1
+          <label> Company Name: </label> <input style="width: 188px;" type="text" name="sponsor_name" value = "Johns LLC">
+          <label> Contact: </label> <input type="text" name="sponsor_contact" value = "Quintana Winsborrow">
+          <label> Phone Number: </label> <input type="text" name="sponsor_phone" value = "912-432-0353"> <br>
+          <label> Email Address: </label> <input style="width: 236px;" type="text" name="sponsor_email" value="qwinsborrow0@census.gov">
+          <label> Sponsorship Level: </label> <select name="employer">
+            <option value="Bronze">Bronze</option>
+            <option value="Silver">Silver	</option>
+            <option value="Gold">Gold </option>
+            <option value="Grand Duck">Grand Duck </option>
+              </select>
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSponsor" value="Update Sponsor">
+          <input class="btn" type="button" value="Cancel" onClick="browseSponsor()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteSponsor">
+      <legend><strong>Delete Sponsor</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you want to delete the following sponsor?</p>
+          <input type="hidden" name="Sponsor_id" id="deleteSponsor_id" value="1">
+          <label>Sponsor ID: </label><strong>1</strong>
+            <label> Company Name: </label> <strong>Johns LLC</strong>        
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteSponsor" value="Delete Sponsor">
+          <input class="btn" type="button" value="Cancel" onClick="browseSponsor()">
+  </form> 
+</div><!-- delete -->
+
+</body>
+</html>

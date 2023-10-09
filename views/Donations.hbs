@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>The Duck Walk - Donations</title>
+<script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+</head>
+
+<body>
+  <h1>Donations</h1>
+  [ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-Donation-html" method="GET" action="/Donations">
+    
+    <label for="searchDonation" class="bold">Search by Participant or Sponsor: </label>
+    <input type="text" name="searchDonation" id="searchDonation" class="searchBox">
+    
+    <input type="submit" class="button bold">
+    <a href="/Donations"><button class="button bold">Reset</button></a>
+</form>
+<p></p>
+
+
+{{!-- Create a table --}}
+<table id="Donations-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, participant, sponsor and donation, in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.ID}}</td>
+            <td>{{this.Participant}}</td>
+            <td>{{this.Sponsor}}</td>
+            <td>{{this.Donation}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteDonations('{{this.ID}}')" style="padding-right: 10px;"></i></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_Donations.js"></script>
+
+{{!-- Form to add a record to the table  --}}
+<div class="addBox">
+    <h2>Add a donation</h2>
+    <p>To add a new donation, please enter its information below and click 'Submit'!</p>
+    <form id="add-Donations-form-ajax">
+    
+        <label for="inputParticipantID" class="bold">Participant: </label>
+        <select name="inputParticipantID" id="inputParticipantID" class="dropdown" required>
+        <option value="" selected disabled>Select a participant</option>
+        <option value="NULL">NONE</option>
+        {{#each participants}}
+        <option value="{{this.participant_id}}">{{this.first_name}} {{this.last_name}}</option>
+        {{/each}}
+        </select><br><br>
+
+        <label for="inputSponsorID" class="bold">Sponsor: </label>
+        <select name="inputSponsorID" id="inputSponsorID" class="dropdown">
+        <option value="" selected disabled>Select a sponsor</option>
+        <option value="NULL">NONE</option>
+        {{#each sponsors}}
+        <option value="{{this.sponsor_id}}">{{this.sponsor_name}}</option>
+        {{/each}}
+        </select><br><br>
+
+        <label for="inputAmount" class="bold">Amount: </label>
+        <input type="number" name="inputAmount" id="inputAmount" class="dropdown" required><br>
+        <br>
+        
+        <input type="submit" class="button">
+    </form>
+
+    {{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+    <script src="./js/add_Donations.js"></script>
+</div>

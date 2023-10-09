@@ -1,0 +1,137 @@
+<!--- index.hbs -->
+<html>
+<head>
+    <title>The Duck Walk - Volunteers</title>
+    <script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+<h1>Volunteers</h1>
+[ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-Name-html" method="GET" action="/Volunteers">
+    
+    <label for="searchName" class="bold">Search by Volunteer Name or Sponsor: </label>
+    <input type="text" name="searchName" id="searchName" class="searchBox">
+    
+    <input type="submit" class="button bold">
+    <a href="/Volunteers"><button class="button bold">Reset</button></a>
+</form>
+<p></p>
+
+<!-- Create a table -->
+<table id="Volunteers-table">
+
+    <!-- Header section -->
+    <thead>
+
+        <!-- For just the first row, we print each key of the row object as a header cell so we know 
+        what each column means when the page renders -->
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <!-- Body section --> 
+    <tbody>
+
+        <!-- For each row, print the id, name, phone number, employer, sponsor, shirt size, and waiver signed. -->
+        {{#each data}}
+        <tr data-value={{this.ID}}>
+            <td>{{this.ID}}</td>
+            <td>{{this.Name}}</td>
+            <td>{{this.Phone}}</td>
+            <td>{{this.Employer}}</td>
+            <td>{{this.Sponsor}}</td>
+            <td>{{this.[Shirt Size]}}</td>
+            <td>{{this.[Waiver Signed?]}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteVolunteers('{{this.ID}}')" style="padding-right: 10px;"></i></td>
+
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_Volunteers.js"></script>
+
+
+<p></p>
+<!-- Form to add a record to the table -->
+<div class="addBox">
+    <h2>Add a new Volunteer</h2>
+    <p>To add a new volunteer, please enter its information below and click 'Submit'!</p>
+    <form id="add-Volunteers-form-ajax">
+
+        <label for="input-first_name" class="bold">First Name: </label><br>
+        <input type="text" name="input-first_name" id="input-first_name" required><br>
+        <br>
+        
+        <label for="input-last_name" class="bold">Last Name: </label><br>
+        <input type="text" name="input-last_name" id="input-last_name" required><br>
+        <br>
+
+        <label for="input-phone_number" class="bold">Phone Number: </label><br>
+        <input type="text" name="input-phone_number" id="input-phone_number" required><br>
+        <br>
+
+        <label for="input-employer" class="bold">Employer: </label><br>
+        <input type="text" name="input-employer" id="input-employer"><br>
+        <br>
+
+        <label for="input-sponsor_id" class="bold">Sponsor ID: </label><br>
+        <select name="input-sponsor_id" id="input-sponsor_id" class="dropdown" required>
+            <option value="NULL" selected disabled>Select a sponsor</option>
+            <option value="NULL">NONE</option>
+            {{#each sponsors}}
+            <option value="{{this.sponsor_id}}">{{this.sponsor_name}}</option>
+            {{/each}}
+        </select><br>
+        <br>
+
+        <label for="inputSize" class="bold">Shirt Size: </label><br/>
+        <select name="inputSize" id="inputSize" class="dropdownShirt" required><br/>
+        <option value="" selected disabled>Select a size</option>
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="2XL">2XL</option>
+        <option value="3XL">3XL</option>
+        </select><br/>
+        <br/>
+
+        <label for="inputWaiver" class="bold">Waiver signed?</label><br>
+        <select name="inputWaiver" id="inputWaiver" class="dropdownShirt" required><br>
+        <option value="1">Yes</option>
+        <option value="0" selected>No</option>
+        </select><br>
+        <br>
+
+        <input type="submit" class="button bold"><br>
+    </form>    
+</div>
+
+
+<!-- Embed our javascript to handle the DOM manipulation and AJAX request --> 
+<script src="./js/add_Volunteers.js"></script>

@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>The Duck Walk - Races</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Races</h1>
+  [ <a href="index.html">Home</a> | <a href="Participants.html">Participants</a> | <a href="Races.html">Races</a> | <a href="ParticipantsByRace.html">Participants by Race </a> | 
+  <a href="Volunteers.html">Volunteers</a> | <a href="VolunteersByRace.html">Volunteers By Race</a> | <a href="Sponsors.html">Sponsors</a> | 
+  <a href="SponsorshipLevels.html">Sponsorship Levels</a> | <a href="Donations.html">Donations</a>]
+  <p>&nbsp;</p>
+
+  <div id="browse" style="display: block">
+  <p><strong>Browse Races</strong></p>
+  <table border="1" cellpadding="5">
+    <tr>
+      <th><a href="#">New</a></th>
+      <th></th>
+      <th> Race ID </th>
+      <th> Race Type </th>
+      <th> Location </th>
+      <th> Date </th>
+      <th> Time </th>
+      <th> Entry Fee </th>
+    </tr>
+    <tr>
+      <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+      <td align="center" >RDD</td>
+      <td align="left">Rubber Duck Derby</td>
+      <td align="left" >Sutton Pond</td>
+      <td align="center" >4/15/2023</td>
+      <td align="center" >10:00 AM</td>
+      <td align="center" >10.00</td>
+    </tr>
+    <tr>
+      <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+      <td align="center" >5KW</td>
+      <td align="left">5K Walk</td>
+      <td align="left" >Cedar Mill Stadium</td>
+      <td align="center" >4/15/2023</td>
+      <td align="center" >9:00 AM</td>
+      <td align="center" >25.00</td>
+    </tr>
+    <tr>
+      <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+      <td align="center">5KR</td>
+      <td align="left">5K Run</td>
+      <td align="left">Cedar Mill Stadium</td>
+      <td align="center">4/15/2023</td>
+      <td align="center">9:00 AM</td>
+      <td align="center">25.00</td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert" style="display: block">
+    <form id="addRace">
+        <legend><strong>Add Race</strong></legend>
+          <fieldset class="fields">
+            <label> Race ID: </label> <input type="text" name="race_id" value = "10K">
+            <label> Race Type: </label> <input type="text" name="race_type" value = "10K Run">
+            <label> Location: </label> <input type="text" name="race_location" value = "Cedar Mill Stadium"> <br>
+            <label> Date: </label> <input type="text" name="race_date" value = "4/16/2023">
+            <label> Time: </label> <input type="text" name="race_time" value = "8:00 AM">
+            <label> Entry Fee: </label> <input type="text" name="entry_fee" value = "30.00"> <br>     
+          </fieldset>
+          <input class="btn" type="submit" id="addRace" value="Add a Race">
+          <input class="btn" type="button" value="Cancel">
+	</form> <!--add new race-->
+</div><!-- insert -->
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+  <form id="updateRace">
+      <legend><strong>Update Race</strong></legend>
+          <fieldset class="fields">
+          <label> Race ID: </label> <input type="text" name="race_id" value = "RDD">
+          <label> Race Type: </label> <input type="text" name="race_type" value = "Rubber Duck Derby">
+          <label> Location: </label> <input type="text" name="race_location" value = "Sutton Pond"> <br>
+          <label> Date: </label> <input type="text" name="race_date" value = "4/15/2023">
+          <label> Time: </label> <input type="text" name="race_time" value = "10:00 AM">
+          <label> Entry Fee: </label> <input type="text" name="entry_fee" value = "10.00"> <br>
+    </fieldset>
+    <input class="btn" type="submit" id="UpdateSaveRace" value="Save Update Race">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteRace">
+      <legend><strong>Delete Race</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID: </label> <strong>1</strong>
+            <label> Race Type: </label><strong>Rubber Duck Derby</strong> 
+        
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteRace" value="Delete Race">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- delete -->
+</body>
+</html>

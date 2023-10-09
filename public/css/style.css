@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Pontano+Sans&family=Stint+Ultra+Expanded&display=swap');
+
+:root {
+    --lightBlue: rgb(117, 154, 168);
+    --rowTan: rgb(201, 188, 169);
+    --cream: rgb(223, 216, 206);
+    --coffee: rgb(216, 192, 162);
+}
+
+
+body {
+    background-color: var(--coffee);
+    font-family: 'Pontano Sans', sans-serif;}
+
+table {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: var(--cream);
+    border: 1px solid;
+
+}
+
+th {
+    background-color: var(--lightBlue);
+}
+
+th, td {
+    border-bottom: 1px solid;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--rowTan);
+}
+
+input {
+    width: 60%;
+    padding: 8px;
+    margin: 7px;
+    border-radius: 10px;
+    border: 1.5px solid black;
+}
+
+h1 {
+    font-family: 'Stint Ultra Expanded', cursive;
+    font-size: 2.5em;
+}
+
+.addBox {
+    background-color: var(--lightBlue);
+    border: 2px solid;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.button {
+    width: 100px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1.5px solid black;
+    font-weight: bold;
+}
+
+.searchBox {
+    width: 30%
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.radio {
+    width: auto;
+    text-align: left;
+    padding: 5px;
+    margin: 10px;
+}
+
+.dropdownShirt {
+    width: 150px;
+    padding: 8px;
+    margin: 7px;
+    border-radius: 10px;
+    border: 1.5px solid black;
+}
+
+.dropdown {
+    width: 300px;
+    padding: 8px;
+    margin: 7px;
+    border-radius: 10px;
+    border: 1.5px solid black;
+}
+
+.leftMargin {
+    margin-left: 150px;
+}
+
+/* Style buttons */
+.trashcan {
+    background-color: --cream;
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: RoyalBlue;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 70px;
+  }
+
+  .gridBox {
+    background-color: var(--lightBlue);
+    border: 2px solid;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+}

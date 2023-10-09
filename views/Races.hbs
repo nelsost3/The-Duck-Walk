@@ -1,0 +1,107 @@
+<!--- index.hbs -->
+<html>
+<head>
+    <title>The Duck Walk - Races</title>
+    <script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+<h1>Races</h1>
+[ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-race-html" method="GET" action="Races">
+    
+    <label for="searchRace" class="bold">Search by Race: </label>
+    <input type="text" name="searchRace" id="searchRace" class="searchBox">
+    
+    <input type="submit" class="button">
+    <a href="/"><button class="button">Reset</button></a>
+</form>
+<p></p>
+
+<!-- Create a table -->
+<table id="Races-table">
+
+    <!-- Header section -->
+    <thead>
+
+        <!-- For just the first row, we print each key of the row object as a header cell so we know 
+        what each column means when the page renders -->
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <!-- Body section --> 
+    <tbody>
+
+        <!-- For each row, print the id, race, location, date, time, and entry fee. -->
+        {{#each data}}
+        <tr data-value={{this.ID}}>
+            <td>{{this.ID}}</td>
+            <td>{{this.Race}}</td>
+            <td>{{this.Location}}</td>
+            <td>{{this.Date}}</td>
+            <td>{{this.Time}}</td>
+            <td>{{this.[Entry Fee]}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteRaces('{{this.ID}}')" style="padding-right: 10px;"></i></td>
+
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_Races.js"></script>
+
+
+<p></p>
+<!-- Form to add a record to the table -->
+<div class="addBox">
+    <h2>Add a new Race</h2>
+    <p>To add a new race, please enter its information below and click 'Submit'!</p>
+    <form id="add-Races-form-ajax">
+        <label for="input-race_id" class="bold">Race ID: </label><br>
+        <input type="text" name="input-race_id" id="input-race_id" required><br>
+        <br>
+        <label for="input-race_type" class="bold">Race Type: </label><br>
+        <input type="text" name="input-race_type" id="input-race_type" required><br>
+        <br>
+        <label for="input-race_location" class="bold">Race Location: </label><br>
+        <input type="text" name="input-race_location" id="input-race_location" required><br>
+        <br>
+        <label for="input-race_date" class="bold">Race Date: </label><br>
+        <input type="date" name="input-race_date" id="input-race_date" required><br>
+        <br>
+        <label for="input-race_time" class="bold">Race Time: </label><br>
+        <input type="time" name="input-race_time" id="input-race_time" required><br>
+        <br>
+        <label for="input-entry_fee" class="bold">Race Entry Fee: </label><br>
+        <input type="number" name="input-race_entry_fee" id="input-entry_fee" required><br>
+        <br>
+        <input type="submit" class="button bold"><br>
+    </form>
+</div>
+
+
+<!-- Embed our javascript to handle the DOM manipulation and AJAX request --> 
+<script src="./js/add_Races.js"></script>

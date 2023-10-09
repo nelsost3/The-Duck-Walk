@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>The Duck Walk - Participants</title>
+    </head>
+<body>
+  <h1>Participants</h1>
+  [ <a href="index.html">Home</a> | <a href="Participants.html">Participants</a> | <a href="Races.html">Races</a> | <a href="ParticipantsByRace.html">Participants by Race </a> | 
+  <a href="Volunteers.html">Volunteers</a> | <a href="VolunteersByRace.html">Volunteers By Race</a> | <a href="Sponsors.html">Sponsors</a> | 
+  <a href="SponsorshipLevels.html">Sponsorship Levels</a> | <a href="Donations.html">Donations</a>]
+  <p>&nbsp;</p>
+
+  <div id="browse" style="display: block">
+    <p><strong>Browse Participants</strong></p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newParticipant()">New</a></th>
+        <th></th>
+        <th>Participant ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+        <th>Shirt Size</th>
+        <th>Waiver Signed?</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateParticipant('this.Participant_id')">Edit</a></td>
+        <td><a href="#" onclick="deleteParticipant('this.Participant_id')">Delete</a></td>
+        <td align="center">1</td>
+        <td align="left">Pippo</td>
+        <td align="left">Biggs</td>
+        <td align="left">1028 Clyde Gallagher Circle</em></td>
+        <td align="left">Cedar Mill</td>
+        <td align="center">TX</td>
+        <td align="center">78787</td>
+        <td align="center">698-487-5773</td>
+        <td align="center">pbiggs0@jigsy.com</td>
+        <td align="center">S</td>
+        <td align="center">0</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateParticipant('this.Participant_id')">Edit</a></td>
+        <td><a href="#" onclick="deleteParticipant('this.Participant_id')">Delete</a></td>
+        <td align="center">2</td>
+        <td align="left">Yvor</td>
+        <td align="left">Petty</td>
+        <td align="left">9 Maywood Pass</em></td>
+        <td align="left">Cedar Mill</td>
+        <td align="center">TX</td>
+        <td align="center">78787</td>
+        <td align="center">696-851-9913</td>
+        <td align="center">ypetty1@nhs.uk</td>
+        <td align="center">M</td>
+        <td align="center">0</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateParticipant('this.Participant_id')">Edit</a></td>
+        <td><a href="#" onclick="deleteParticipant('this.Participant_id')">Delete</a></td>
+        <td align="center">3</td>
+        <td align="left">Thomas</td>
+        <td align="left">Robillard</td>
+        <td align="left">489 Marcy Crossing</em></td>
+        <td align="left">Cedar Mill</td>
+        <td align="center">TX</td>
+        <td align="center">78787</td>
+        <td align="center">198-406-9764</td>
+        <td align="center">trobillard2@census.gov</td>
+        <td align="center">XL</td>
+        <td align="center">0</td>
+      </tr>
+    </table>
+  </div> <!-- browse -->
+  <p>&nbsp;</p>
+  <div id="insert" style="display: block">
+      <form method="POST" id="addParticipant">
+          <legend><strong>Add Participant</strong></legend>
+            <fieldset class="fields">
+              <label> First Name: </label> <input type="text" name="first_name" value = "Shina">
+              <label> Last Name: </label> <input type="text" name="last_name" value = "Gipp">
+              <label> Address: </label> <input type="text" name="address" value = "96601 American Drive"> <br>
+              <label> City: </label> <input type="text" name="city" value="Cedar Mill">
+              <label> State: </label> <input type="text" name="state" value="TX">
+              <label> Zip Code: </label> <input type="text" name="zip_code" value="78787"> <br>
+              <label> Phone Number: </label> <input type="text" name="phone_number" value="551-446-3287">
+              <label> Email Address: </label> <input type="text" name="email_address" value="sgipp3@eepurl.com">
+              <label> Shirt Size: </label> <input type="text" name="shirt_size" value="3XL"> <br>
+              <label> Waiver Signed: </label> 
+                <select>
+                  <option value="0"> No </option>
+                  <option value="1"> Yes </option>
+                </select>
+        </fieldset>
+            <input class="btn" type="submit" id="addParticipant" value="Add Participant">
+            <input class="btn" type="button" value="Cancel" onClick="browseParticipant()">
+    </form> 
+  </div><!-- insert -->
+  <p>&nbsp;</p>
+  <div id="update" style="display: block">
+      <form method="POST" id="UpdateParticipant">
+          <legend><strong>Update Participant</strong></legend>
+            <fieldset class="fields">
+            <input type="hidden" name="Participant_id" id="updateParticipant_id" value="1">
+            <label> ID: </label> 1
+            <label> First Name: </label> <input type="text" name="first_name" value = "Pippo">
+            <label> Last Name: </label> <input type="text" name="last_name" value = "Biggs">
+            <label> Address: </label> <input type="text" name="address" value = "1028 Clyde Gallagher Circle"> <br>
+            <label> City: </label> <input type="text" name="city" value="Cedar Mill">
+            <label> State: </label> <input type="text" name="state" value="TX">
+            <label> Zip Code: </label> <input type="text" name="zip_code" value="78787"> <br>
+            <label> Phone Number: </label> <input type="text" name="phone_number" value="TX">
+            <label> Email Address: </label> <input type="text" name="email_address" value="pbiggs0@jigsy.com">
+            <label> Shirt Size: </label> <input type="text" name="shirt_size" value="S"> <br>
+            <label> Waiver Signed: </label> 
+              <select>
+                <option value="0"> No </option>
+                <option value="1"> Yes </option>
+              </select>
+        </fieldset>
+            <input class="btn" type="submit" id="UpdateSaveParticipant" value="Save Update Participant">
+            <input class="btn" type="button" value="Cancel" onClick="browseParticipant()">
+    </form> 
+  </div><!-- update -->
+  <p>&nbsp;</p>
+  <div id="delete" style="display: block">
+    <form method="POST" id="deleteParticipant">
+        <legend><strong>Delete Participant</strong></legend>
+            <fieldset class="fields">
+            <p>Are you sure you want to delete the following participant?</p>
+            <input type="hidden" name="Participant_id" id="deleteParticipant_id" value="1">
+            <label>Participant ID: </label> <strong>1</strong>
+              <label>Name: </label><strong>Pippo Biggs</strong> 
+              
+      </fieldset>
+      <input class="btn" type="submit" id="DeleteParticipant" value="Delete Participant">
+            <input class="btn" type="button" value="Cancel" onClick="browseParticipant()">
+    </form> 
+  </div><!-- delete -->
+
+</body>
+</html>

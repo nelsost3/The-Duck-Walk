@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>The Duck Walk - Donations</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Donations</h1>
+  [ <a href="index.html">Home</a> | <a href="Participants.html">Participants</a> | <a href="Races.html">Races</a> | <a href="ParticipantsByRace.html">Participants by Race </a> | 
+  <a href="Volunteers.html">Volunteers</a> | <a href="VolunteersByRace.html">Volunteers By Race</a> | <a href="Sponsors.html">Sponsors</a> | 
+  <a href="SponsorshipLevels.html">Sponsorship Levels</a> | <a href="Donations.html">Donations</a>]
+  <p>&nbsp;</p>
+
+  <div id="browse" style="display: block">
+<p><strong>Browse Donations</strong></p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#">New</a></th>
+    <th></th>
+    <th> Donation ID </th>
+    <th> Participant ID </th>
+    <th> Sponsor ID </th>
+    <th> Donation Amount </th>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="center">1</td>
+    <td align="center">1</td>
+    <td align="center">NULL</td>
+    <td align="right">10.00</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="center">2</td>
+    <td align="center">2</td>
+    <td align="center">NULL</td>
+    <td align="right">25.00</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="center">3</td>
+    <td align="center">3</td>
+    <td align="center">NULL</td>
+    <td align="right">25.00</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert" style="display: block">
+    <form id="addDonation">
+        <legend><strong>Add Donation</strong></legend>
+          <fieldset class="fields">
+            <label> Participant ID: </label> 
+              <select>
+                <option value="NULL">NULL</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <label> Sponsor ID: </label> 
+              <select>
+                <option value="NULL">NULL</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <label> Donation Amount: </label> <input type="text" name="donation_amount" value = "10.00">
+          </fieldset>
+          <input class="btn" type="submit" id="addDonation" value="Add Donation">
+          <input class="btn" type="button" value="Cancel">
+	</form> <!--add new Donation-->
+</div><!-- insert -->
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+  <form id="updateDonation">
+      <legend><strong>Update Donation</strong></legend>
+          <fieldset class="fields">
+            <label> Donation ID: </label> 1
+            <label> Participant ID: </label> 
+              <select>
+                <option value="NULL">NULL</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <label> Sponsor ID: </label> 
+              <select>
+                <option value="NULL">NULL</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <label> Donation Amount: </label> <input type="text" name="donation_amount" value = "25.00">
+    </fieldset>
+    <input class="btn" type="submit" id="UpdateDonation" value="Update Donation">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteDonation">
+      <legend><strong>Delete Donation</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>Donation ID:</label> <strong>1</strong>
+            <label> </label>
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteDonation" value="Delete Donation">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- delete -->
+</body>
+</html>

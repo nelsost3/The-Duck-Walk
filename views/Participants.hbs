@@ -1,0 +1,150 @@
+<!--- index.hbs -->
+<html>
+<head>
+    <title>The Duck Walk - Donations</title>
+    <script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+<h1>Participants</h1>
+[ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-name-html" method="GET" action="Participants">
+    
+    <label for="searchName" class="bold">Search by Participant Name: </label>
+    <input type="text" name="searchName" id="searchName" class="searchBox">
+    
+    <input type="submit" class="button">
+    <a href="/"><button class="button">Reset</button></a>
+</form>
+<p></p>
+
+<!-- Create a table -->
+<table id="Participants-table">
+
+    <!-- Header section -->
+    <thead>
+
+        <!-- For just the first row, we print each key of the row object as a header cell so we know 
+        what each column means when the page renders -->
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <!-- Body section --> 
+    <tbody>
+
+        <!-- For each row, print the id, name, address, city, state, zip code, phone number, email address, shirt size, and waiver signed. -->
+        {{#each data}}
+        <tr data-value={{this.ID}}>
+            <td>{{this.ID}}</td>
+            <td>{{this.Name}}</td>
+            <td>{{this.Address}}</td>
+            <td>{{this.City}}</td>
+            <td>{{this.State}}</td>
+            <td>{{this.[Zip Code]}}</td>
+            <td>{{this.Phone}}</td>
+            <td>{{this.Email}}</td>
+            <td>{{this.[Shirt Size]}}</td>
+            <td>{{this.[Waiver Signed?]}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteParticipants('{{this.ID}}')" style="padding-right: 10px;"></i></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="./js/delete_Participants.js"></script>
+
+
+<p></p>
+
+
+<!-- Form to add a record to the table -->
+<div class="addBox">
+    <h2>Add a new Participant</h2>
+    <p>To add a new participant, please enter their information below and click 'Submit'!</p>
+    <form id="add-Participants-form-ajax">
+        <label for="inputFName" class="bold alignLeft" >First Name: </label><br/>
+        <input type="text" name="inputFName" id="inputFName" required><br/>
+        <br/>
+        
+        <label for="inputLName" class="bold alignLeft">Last Name: </label><br/>
+        <input type="text" name="inputLName" id="inputLName" required><br/>
+        <br/>
+        
+        <label for="inputAddress" class="bold alignLeft">Address: </label><br/>
+        <input type="text" name="inputAddress" id="inputAddress" required><br/>
+        <br/>
+        
+        <label for="inputCity" class="bold alignLeft">City: </label><br/>
+        <input type="text" name="inputCity" id="inputCity" required><br/>
+        <br/>
+        
+        <label for="inputState" class="bold alignLeft">State: </label><br/>
+        <input type="text" name="inputState" id="inputState" required><br/>
+        <br/>
+        
+        <label for="inputZip" class="bold alignLeft">Zip Code: </label><br/>
+        <input type="number" name="inputZip" id="inputZip" required><br/>
+        <br/>
+        
+        <label for="inputPhone" class="bold alignLeft">Phone Number: </label><br/>
+        <input type="text" name="inputPhone" id="inputPhone" required><br/>
+        <br/>
+        
+        <label for="inputEmail" class="bold alignLeft">Email: </label><br/>
+        <input type="email" name="inputEmail" id="inputEmail" required><br/>
+        <br/>
+        
+        <label for="inputSize" class="bold">Shirt Size: </label><br/>
+        <select name="inputSize" id="inputSize" class="dropdownShirt" required><br/>
+        <option value="" selected disabled>Select a size</option>
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="2XL">2XL</option>
+        <option value="3XL">3XL</option>
+        </select><br/>
+        <br/>
+        
+        <label for="inputWaiver" class="bold">Waiver signed?</label><br>
+        <select name="inputWaiver" id="inputWaiver" class="dropdownShirt" required><br>
+        <option value="1">Yes</option>
+        <option value="0" selected>No</option>
+        </select><br>
+        <br>
+
+        <input type="submit" class="button"><br/>
+    </form>
+
+</div>
+
+<!-- Embed our javascript to handle the DOM manipulation and AJAX request --> 
+<script src="./js/add_Participants.js"></script>
+
+
+    

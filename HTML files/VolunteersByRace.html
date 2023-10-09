@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>The Duck Walk - Volunteers by Race Assignment</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Volunteer-Race Assignments</h1>
+  [ <a href="index.html">Home</a> | <a href="Participants.html">Participants</a> | <a href="Races.html">Races</a> | <a href="ParticipantsByRace.html">Participants by Race </a> | 
+  <a href="Volunteers.html">Volunteers</a> | <a href="VolunteersByRace.html">Volunteers By Race</a> | <a href="Sponsors.html">Sponsors</a> | 
+  <a href="SponsorshipLevels.html">Sponsorship Levels</a> | <a href="Donations.html">Donations</a>]
+  <p>&nbsp;</p>
+
+  <div id="browse" style="display: block">
+<p><strong>Browse Volunteers Assigned to Races</strong></p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#">New</a></th>
+    <th></th>
+    <th> Assignment ID </th>
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> Race Type </th>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="center">1</td>
+    <td align="left">Pen</td>
+    <td align="left">Caldwell</td>
+    <td align="center">Rubber Duck Derby</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="center">2</td>
+    <td align="left">Fons</td>
+    <td align="left">Larrington</td>
+    <td align="center">5K Walk</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="center">3</td>
+    <td align="left">Sherri</td>
+    <td align="left">Kendell</td>
+    <td align="center">5K Run</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- insert -->
+<div id="insert" style="display: block">
+    <form id="addVolunteerRaceAssignment">
+        <legend><strong>Assign a Volunteer to a Race</strong></legend>
+          <fieldset class="fields">
+            <label> Volunteer ID: </label> 
+              <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <label> Race ID: </label>
+              <select>
+                <option value="RDD">RDD</option>
+                <option value="5KW">5KW</option>
+                <option value="5KR">5KR</option>
+              </select>
+          </fieldset>
+          <input class="btn" type="submit" id="addVolunteerRaceAssignment" value="Add Volunteer-Race Assignment">
+          <input class="btn" type="button" value="Cancel">
+	</form> <!--add new RaceVolunteer-->
+</div><!-- insert -->
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+  <form id="updateVolunteerRaceAssignment">
+      <legend><strong>Update a Race Assignment for a Volunteer</strong></legend>
+          <fieldset class="fields">
+            <label> Assignment ID: </label> 3
+            <label> Volunteer ID: </label> 
+              <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <label> Race ID: </label> 
+              <select>
+                <option value="RDD">RDD</option>
+                <option value="5KW">5KW</option>
+                <option value="5KR">5KR</option>
+              </select>
+    </fieldset>
+    <input class="btn" type="submit" id="UpdateVolunteerRaceAssignment" value="Update Volunteer-Race Assignment">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteVolunteerRaceAssignment">
+      <legend><strong>Delete a Race Assignment for a Volunteer</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label> Assignment ID:</label> <strong>2</strong>
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteVolunteerRaceAssignment" value="Delete Volunteer-Race Assignment">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- delete -->
+</body>
+</html>

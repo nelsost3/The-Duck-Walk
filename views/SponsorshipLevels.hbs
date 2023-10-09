@@ -1,0 +1,107 @@
+<!--- index.hbs -->
+<html>
+<head>
+    <title>The Duck Walk - Sponsorship Levels</title>
+    <script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+<h1>Sponsorship Levels</h1>
+[ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-level-html" method="GET" action="SponsorshipLevels">
+    
+    <label for="input-level" class="bold">Search by Sponsorship Level: </label>
+    <input type="text" name="level" id="input-level-search" class="searchBox">
+    
+    <input type="submit" class="button">
+    <a href="/"><button class="button">Clear</button></a>
+</form>
+<p></p>
+
+<!-- Create a table -->
+<table id="SponsorshipLevels-table">
+
+    <!-- Header section -->
+    <thead>
+
+        <!-- For just the first row, we print each key of the row object as a header cell so we know 
+        what each column means when the page renders -->
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <!-- Body section --> 
+    <tbody>
+
+        <!-- For each row, print the sponsorship level, cost, description, and the number of duck derby entries. -->
+        {{#each data}}
+        <tr data-value={{this.[Sponsorship Level]}}>
+            <td>{{this.[Sponsorship Level]}}</td>
+            <td>{{this.Cost}}</td>
+            <td>{{this.Description}}</td>
+            <td>{{this.[Free Duck Derby Entries]}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteSponsorshipLevels('{{this.[Sponsorship Level]}}')" style="padding-right: 10px;"></i></td>
+
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="./js/update_SponsorshipLevels.js"></script>
+<script src="./js/delete_SponsorshipLevels.js"></script>
+
+
+<p></p>
+<!-- Form to add a record to the table -->
+<div class="addBox">
+    <h2>Add a new Sponsorship Level</h2>
+    <p>To add a new sponsorship level, please enter its information below and click 'Submit'!</p>
+    <form id="add-SponsorshipLevels-form-ajax">
+        <label for="input-level" class="bold">Sponsorship Level: </label><br>
+        <input type="text" name="input-level" id="input-level" required><br>
+        <br>
+
+        <label for="input-cost" class="bold">Cost: </label><br>
+        <input type="number" name="input-cost" id="input-cost" required><br>
+        <br>
+
+        <label for="input-description" class="bold">Description: </label><br>
+        <input type="text" name="input-description" id="input-description"><br>
+        <br>
+
+        <label for="input-free_duck_entries" class="bold">Number of free Duck Derby entries: </label><br>
+        <input type="number" name="input-free_duck_entries" id="input-free_duck_entries" required><br>
+        <br>
+
+        <input type="submit" class="button">
+    </form>    
+</div>
+
+
+
+<!-- Embed our javascript to handle the DOM manipulation and AJAX request --> 
+<script src="./js/add_SponsorshipLevels.js"></script>
+

@@ -1,0 +1,25 @@
+{
+  "name": "the-duck-walk",
+  "version": "1.0.0",
+  "description": "Portfolio project for CS 340 at Oregon State University (Winter 2023)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abbylt/The-Duck-Walk.git"
+  },
+  "author": "Abby Thornton and Steven Nelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abbylt/The-Duck-Walk/issues"
+  },
+  "homepage": "https://github.com/abbylt/The-Duck-Walk#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "forever": "^4.0.3",
+    "mysql": "^2.18.1"
+  }
+}

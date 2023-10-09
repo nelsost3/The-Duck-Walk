@@ -1,0 +1,104 @@
+<!--- index.hbs -->
+<html>
+<head>
+    <title>The Duck Walk - Volunteers By Race</title>
+    <script src="https://kit.fontawesome.com/5e9c719c6f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project -->
+<!-- Date: 3/16/2023 -->
+<!-- Originality: Adapted from Node.JS starter guide from Exploration - Developing in Node.JS -->
+<!-- Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<!-- Citation Scope: - Setting up Delete function for newly added row -->
+<!-- Date: 3/17/2023 -->
+<!-- Originality: Adapted from code given in peer review for Group 18 Project Step 5 Draft by Julian Peterson -->
+<!-- Source: https://edstem.org/us/courses/32532/discussion/2754726?answer=6360010 -->
+
+<h1>Volunteers By Race</h1>
+[ <a href="/">Home</a> | <a href="Participants">Participants</a> | <a href="Races">Races</a> | <a href="ParticipantsByRace">Participants by Race </a> | 
+  <a href="Volunteers">Volunteers</a> | <a href="VolunteersByRace">Volunteers By Race</a> | <a href="Sponsors">Sponsors</a> | 
+  <a href="SponsorshipLevels">Sponsorship Levels</a> | <a href="Donations">Donations</a>]
+  <p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!-- Create a search box -->
+<form id="search-race_id-html" method="GET" action="VolunteersByRace">
+    
+    <label for="searchRaceVolunteer" class="bold">Search by Race or Volunteer: </label>
+    <input type="text" name="searchRaceVolunteer" id="searchRaceVolunteer" class="searchBox">
+    
+    <input type="submit" class="button">
+    <a href="/"><button class="button">Clear</button></a>
+</form>
+<p></p>
+
+<!-- Create a table -->
+<table id="Races_Volunteers-table">
+
+    <!-- Header section -->
+    <thead>
+
+        <!-- For just the first row, we print each key of the row object as a header cell so we know 
+        what each column means when the page renders -->
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <!-- Body section --> 
+    <tbody>
+
+        <!-- For each row, print the id, race, and volunteer. -->
+        {{#each data}}
+        <tr data-value={{this.ID}}>
+            <td>{{this.ID}}</td>
+            <td>{{this.Race}}</td>
+            <td>{{this.Volunteer}}</td>
+            <td><i class="fa-solid fa-trash-can fa-lg" onclick="deleteRaces_Volunteers('{{this.ID}}')" style="padding-right: 10px;"></i></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_Races_Volunteers.js"></script>
+
+
+<p></p>
+<!-- Form to add a record to the table -->
+<div class="addBox">
+    <h2>Add a new Volunteer By Race</h2>
+    <p>To add a new volunteer by race, please enter the information below and click 'Submit'!</p>
+    <form id="add-Races_Volunteers-form-ajax">
+
+        <label for="input-race_id" class="bold">Race: </label><br>
+        <select name="input-race_id" id="input-race_id" class="dropdown" required>
+            <option value=""selected disabled>Select Race</option>
+            {{#each races}}
+            <option value="{{this.race_id}}">{{this.race_type}}</option>
+            {{/each}}
+        </select><br>
+        <br>
+
+        <label for="input-volunteer_id" class="bold">Volunteer: </label><br>
+        <select name="input-volunteer_id" id="input-volunteer_id" class="dropdown" required>
+            <option value="" selected disabled>Select Volunteer</option>
+            {{#each volunteers}}
+            <option value="{{this.volunteer_id}}">{{this.first_name}} {{this.last_name}}</option>
+            {{/each}}
+        </select><br>
+        <br>
+
+        <input type="submit" class="button"><br>
+    </form>    
+</div>
+
+
+<!-- Embed our javascript to handle the DOM manipulation and AJAX request --> 
+<script src="./js/add_Races_Volunteers.js"></script>
