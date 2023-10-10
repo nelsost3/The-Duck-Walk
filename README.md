@@ -1,4 +1,4 @@
-# The-Duck-Walk
+# The-Duck-Walk 🦆
 Portfolio project for CS 340 Introduction to Databases at Oregon State University
 
 Citation Scope: - Developing Node.JS pages / CRUD abilties and HBS Webpages for project
